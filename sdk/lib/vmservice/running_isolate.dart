@@ -13,9 +13,9 @@ class RunningIsolate implements MessageRouter {
   RunningIsolate(this.portId, this.sendPort, this.name);
 
   void onIsolateExit() {
-    pendingMessagesReceivePorts.forEach((port) {
+    for (var port in pendingMessagesReceivePorts) {
       port.close();
-    });
+    }
   }
 
   String get serviceId => 'isolates/$portId';

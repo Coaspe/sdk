@@ -11,9 +11,7 @@ class RunningIsolates implements MessageRouter {
   RunningIsolates();
 
   void isolateStartup(int portId, SendPort sp, String name) {
-    if (_rootPortId == null) {
-      _rootPortId = portId;
-    }
+    _rootPortId ??= portId;
     var ri = RunningIsolate(portId, sp, name);
     isolates[portId] = ri;
   }
